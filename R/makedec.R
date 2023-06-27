@@ -33,7 +33,11 @@ makedec <- function(comvec, geocoords4n, probadoptmean4, probadoptsd4 , readprob
 
 
   if(!readprobadoptvec4){
-    probadoptvec4 <- truncnorm::rtruncnorm(n=nodlen, a=0, b=1, mean = probadoptmean4, sd=probadoptsd4 )
+    if(probadoptvec4 == 0) {
+		# Manually create vector
+    } else {
+	    probadoptvec4 <- truncnorm::rtruncnorm(n=nodlen, a=0, b=1, mean = probadoptmean4, sd=probadoptsd4 )
+    }
   }
   
   stochadopt <- runif(n=nodlen, min=0, max=1)
